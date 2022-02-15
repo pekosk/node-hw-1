@@ -15,7 +15,7 @@ async function listContacts() {
 
 async function getContactById(contactId) {
     const contacts = await readContent()
-    const [contact] = contacts.filter(c => c.id === contactId)
+    const [contact] = contacts.filter(contact => contact.id === contactId)
     return contact
 }
 
@@ -27,7 +27,7 @@ async function addContact(name, email, phone) {
     const contacts = await readContent()
     const newContact = { id: randomUUID(), name, email, phone }
     contacts.push(newContact)
-    await fs.writeFile(path.join(__dirname, 'contacts.json'), JSON.stringify(contacts, null, 2),
+    await fs.writeFile(path.join(__dirname, 'db', 'contacts.json'), JSON.stringify(contacts, null, 2),
     )
     return newContact
 }
