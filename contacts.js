@@ -19,7 +19,13 @@ async function getContactById(contactId) {
     return contact
 }
 
-function removeContact(contactId) {
+async function removeContact(contactId) {
+    const contact = await getContactById(contactId);
+    const contactsList = await listContacts();
+    const newContactsList = contactsList.filter(contact => contact.id !== contactId);
+    await fs.writeFile(path.join(__dirname, 'db', 'contacts.json'), JSON.stringify(newContactsList, null, 2),
+    )
+    return contact
 }
 
 async function addContact(name, email, phone) {
