@@ -20,7 +20,6 @@ async function getContactById(contactId) {
 }
 
 function removeContact(contactId) {
-    // ...твой код
 }
 
 async function addContact(name, email, phone) {
